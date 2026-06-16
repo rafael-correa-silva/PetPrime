@@ -4,7 +4,7 @@ Site institucional para a **PetPrime**, pet shop fundado em 2010 em Guimarânia-
 
 **Slogan:** *"Cuidado & Qualidade para seu Pet"*
 
-🔗 [Ver demo](#) <!-- substitua pelo link do GitHub Pages após o deploy -->
+🔗
 
 ---
 
@@ -66,14 +66,13 @@ petprime/
 | Bege | `#FFF8F0` |
 | Tipografia (display) | Poppins |
 | Tipografia (texto) | Inter |
-| Elemento assinatura | 🐾 Patinha dourada |
 
 ## 🚀 Como rodar localmente
 
 Não há build nem dependências — basta abrir o arquivo:
 
 ```bash
-git clone https://github.com/seu-usuario/petprime.git
+git clone https://github.com/rafael-correa-silva/PetPrime.git
 cd petprime
 ```
 
