@@ -232,6 +232,11 @@ ul {
   width: auto; 
 }
 
+/* Logo no hero — escondida no desktop */
+.hero-logo-mobile {
+  display: none;
+}
+
 nav ul {
   display: flex;
   align-items: center;
@@ -1593,6 +1598,18 @@ nav a:hover::after {
   .hamburger { display: flex; }
   .mobile-nav { display: block; }
 
+  /* Logo dentro do hero — só no mobile */
+  .hero-logo-mobile {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .hero-logo-mobile img {
+    height: 160px;
+    width: auto;
+  }
+
   .form-row { grid-template-columns: 1fr; }
 
   .galeria-grid { grid-template-columns: 1fr 1fr; }
@@ -1612,6 +1629,10 @@ nav a:hover::after {
   .form-card { padding: 24px 20px; }
   .sobre-badge-anos { width: 72px; height: 72px; }
   .sobre-badge-anos strong { font-size: 1.4rem; }
+
+  .hero-logo-mobile img {
+    height: 120px;
+  }
 }
 
 /* ── Pages (privacidade, termos) ── */
