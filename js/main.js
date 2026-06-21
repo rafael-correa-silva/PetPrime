@@ -1,5 +1,3 @@
-/* PetPrime — main.js */
-
 /* ── Header scroll ── */
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
