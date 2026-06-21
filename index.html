@@ -115,7 +115,7 @@
   <div class="hero-image" aria-hidden="true">
     <!-- Hero: profissional com cão grande -->
     <img
-      src="images/caoGrande.png"
+      src="images/caoGrande.webp"
       alt="Profissional cuidando de cão grande"
       loading="eager"
     />
@@ -142,14 +142,14 @@
       <div class="sobre-images" aria-hidden="true">
         <div class="sobre-img-main">
           <img
-            src="images/fotoEquipe.png"
+            src="images/fotoEquipe.webp"
             alt="Equipe PetPrime"
             loading="lazy"
           />
         </div>
         <div class="sobre-img-secondary">
           <img
-            src="images/gatoFeliz.avif"
+            src="images/gatoFeliz.webp"
             alt="Gato Feliz"
             loading="lazy"
           />
@@ -182,8 +182,8 @@
           <div class="equipe-cards">
             <div class="equipe-card">
               <img
-                src="images/brenoFoto.avif" 
-                alt="Rafael Corrêa - Fundador"
+                src="images/brenoFoto.webp" 
+                alt="Breno Silva - Fundador"
                 loading="lazy"
               />
               <div>
@@ -193,8 +193,8 @@
             </div>
             <div class="equipe-card">
               <img
-                src="images/soniaFoto.avif"
-                alt="Sônia Silva- Banhista"
+                src="images/soniaFoto.webp"
+                alt="Sônia Silva - Banhista"
                 loading="lazy"
               />
               <div>
@@ -228,7 +228,7 @@
       <div class="servico-card fade-up fade-up-delay-1">
         <div class="servico-img">
           <img
-            src="images/banho.avif"
+            src="images/banho.webp"
             alt="Banho para gatos e cães"
             loading="lazy"
           />
@@ -246,7 +246,7 @@
       <div class="servico-card fade-up fade-up-delay-2">
         <div class="servico-img">
           <img
-            src="images/tosa.jpg"
+            src="images/tosa.webp"
             alt="Tosa profissional para cães"
             loading="lazy"
           />
@@ -264,7 +264,7 @@
       <div class="servico-card fade-up fade-up-delay-3">
         <div class="servico-img">
           <img
-            src="images/banhoTosa.avif"
+            src="images/banhoTosa.webp"
             alt="Banho e tosa para Yorkshire"
             loading="lazy"
           />
@@ -323,79 +323,154 @@
 
       <div class="form-card fade-up fade-up-delay-1">
         <h3>🐾 Formulário de agendamento</h3>
+
+        <!-- Indicador de progresso -->
+        <div class="form-steps" aria-hidden="true">
+          <div class="form-step active" data-step="1">
+            <span class="form-step-circle">1</span>
+            <span class="form-step-label">Dados</span>
+          </div>
+          <div class="form-step-line"></div>
+          <div class="form-step" data-step="2">
+            <span class="form-step-circle">2</span>
+            <span class="form-step-label">Serviço</span>
+          </div>
+          <div class="form-step-line"></div>
+          <div class="form-step" data-step="3">
+            <span class="form-step-circle">3</span>
+            <span class="form-step-label">Data</span>
+          </div>
+          <div class="form-step-line"></div>
+          <div class="form-step" data-step="4">
+            <span class="form-step-circle">4</span>
+            <span class="form-step-label">Confirmar</span>
+          </div>
+        </div>
+
         <form id="form-agendamento" novalidate>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nome">Seu nome</label>
-              <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required autocomplete="name"/>
-              <span class="form-error"></span>
+          <!-- ETAPA 1: Dados do tutor e pet -->
+          <fieldset class="form-stage active" data-stage="1">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Seu nome</label>
+                <div class="input-wrap">
+                  <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required autocomplete="name"/>
+                  <span class="input-check">✓</span>
+                </div>
+                <span class="form-error"></span>
+              </div>
+              <div class="form-group">
+                <label for="telefone">WhatsApp / Telefone</label>
+                <div class="input-wrap">
+                  <input type="tel" id="telefone" name="telefone" placeholder="(34) 99999-9999" required autocomplete="tel" inputmode="numeric" maxlength="15"/>
+                  <span class="input-check">✓</span>
+                </div>
+                <span class="form-error"></span>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="telefone">WhatsApp / Telefone</label>
-              <input type="tel" id="telefone" name="telefone" placeholder="(34) 99999-9999" required autocomplete="tel"/>
-              <span class="form-error"></span>
-            </div>
-          </div>
 
-          <div class="form-row">
             <div class="form-group">
               <label for="pet">Nome do pet</label>
-              <input type="text" id="pet" name="pet" placeholder="Ex: Rex" required/>
+              <div class="input-wrap">
+                <input type="text" id="pet" name="pet" placeholder="Ex: Rex" required/>
+                <span class="input-check">✓</span>
+              </div>
               <span class="form-error"></span>
             </div>
+
+            <button type="button" class="btn btn-primary form-next" data-next="2">
+              Próximo: Serviço →
+            </button>
+          </fieldset>
+
+          <!-- ETAPA 2: Serviço e Táxi Pet -->
+          <fieldset class="form-stage" data-stage="2">
             <div class="form-group">
-              <label for="servico">Serviço</label>
-              <select id="servico" name="servico" required>
-                <option value="">Selecione...</option>
-                <option value="Banho">🛁 Banho</option>
-                <option value="Tosa">✂️ Tosa</option>
-                <option value="Banho + Tosa">🐶 Banho + Tosa</option>
-              </select>
+              <label for="servico">Serviço desejado</label>
+              <div class="input-wrap">
+                <select id="servico" name="servico" required>
+                  <option value="">Selecione...</option>
+                  <option value="Banho">🛁 Banho</option>
+                  <option value="Tosa">✂️ Tosa</option>
+                  <option value="Banho + Tosa">🐶 Banho + Tosa</option>
+                </select>
+                <span class="input-check">✓</span>
+              </div>
               <span class="form-error"></span>
             </div>
-          </div>
 
-          <div class="form-row">
+            <label class="taxi-check">
+              <input type="checkbox" id="taxi-pet" name="taxi-pet"/>
+              <span class="taxi-check-label">
+                <strong>🚗 Solicitar Táxi Pet</strong>
+                Precisamos buscar seu pet? Marque aqui e informe o endereço. Orçamento enviado pelo WhatsApp.
+              </span>
+            </label>
+
+            <div class="form-group taxi-endereco" id="taxi-endereco-wrap" hidden>
+              <label for="endereco">Endereço para busca</label>
+              <div class="input-wrap">
+                <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro"/>
+                <span class="input-check">✓</span>
+              </div>
+              <span class="form-error"></span>
+            </div>
+
+            <div class="form-stage-actions">
+              <button type="button" class="btn btn-outline form-prev" data-prev="1">← Voltar</button>
+              <button type="button" class="btn btn-primary form-next" data-next="3">Próximo: Data →</button>
+            </div>
+          </fieldset>
+
+          <!-- ETAPA 3: Data, horário e observações -->
+          <fieldset class="form-stage" data-stage="3">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="data">Data desejada</label>
+                <div class="input-wrap">
+                  <input type="date" id="data" name="data" required/>
+                  <span class="input-check">✓</span>
+                </div>
+                <span class="form-error"></span>
+                <span class="form-hint" id="data-hint"></span>
+              </div>
+              <div class="form-group">
+                <label for="hora">Horário</label>
+                <div class="input-wrap">
+                  <select id="hora" name="hora" required disabled>
+                    <option value="">Escolha a data primeiro</option>
+                  </select>
+                  <span class="input-check">✓</span>
+                </div>
+                <span class="form-error"></span>
+              </div>
+            </div>
+
             <div class="form-group">
-              <label for="data">Data desejada</label>
-              <input type="date" id="data" name="data" required/>
-              <span class="form-error"></span>
+              <label for="observacoes">Observações (opcional)</label>
+              <textarea id="observacoes" name="observacoes" rows="3" maxlength="300" placeholder="Raça do pet, cuidados especiais, alergias..."></textarea>
+              <span class="form-charcount"><span id="obs-count">0</span>/300</span>
             </div>
-            <div class="form-group">
-              <label for="hora">Horário</label>
-              <select id="hora" name="hora" required>
-                <option value="">Selecione...</option>
-                <option>08:00</option>
-                <option>09:00</option>
-                <option>10:00</option>
-                <option>11:00</option>
-                <option>13:00</option>
-                <option>14:00</option>
-                <option>15:00</option>
-                <option>16:00</option>
-                <option>17:00</option>
-              </select>
-              <span class="form-error"></span>
+
+            <div class="form-stage-actions">
+              <button type="button" class="btn btn-outline form-prev" data-prev="2">← Voltar</button>
+              <button type="button" class="btn btn-primary form-next" data-next="4">Revisar pedido →</button>
             </div>
-          </div>
+          </fieldset>
 
-          <label class="taxi-check">
-            <input type="checkbox" id="taxi-pet" name="taxi-pet"/>
-            <span class="taxi-check-label">
-              <strong>🚗 Solicitar Táxi Pet</strong>
-              Precisamos buscar seu pet? Marque aqui e inclua o endereço nas observações. Orçamento enviado pelo WhatsApp.
-            </span>
-          </label>
+          <!-- ETAPA 4: Resumo / confirmação -->
+          <fieldset class="form-stage" data-stage="4">
+            <div class="resumo-card" id="resumo-card" aria-live="polite"></div>
 
-          <div class="form-group">
-            <label for="observacoes">Observações (opcional)</label>
-            <textarea id="observacoes" name="observacoes" rows="3" placeholder="Raça do pet, endereço para táxi, cuidados especiais..."></textarea>
-          </div>
+            <div class="form-stage-actions">
+              <button type="button" class="btn btn-outline form-prev" data-prev="3">← Voltar</button>
+              <button type="submit" class="btn btn-primary form-submit">
+                📲 Confirmar e enviar pelo WhatsApp
+              </button>
+            </div>
+          </fieldset>
 
-          <button type="submit" class="btn btn-primary form-submit">
-            📲 Enviar pelo WhatsApp
-          </button>
         </form>
       </div>
 
@@ -512,19 +587,19 @@
     </div>
     <div class="galeria-grid">
       <div class="galeria-item fade-up">
-        <img src="images/cachorroFofo.jpg" alt="Cão feliz" loading="lazy"/>
+        <img src="images/cachorroFofo.webp" alt="Cão feliz" loading="lazy"/>
       </div>
       <div class="galeria-item fade-up fade-up-delay-1">
-        <img src="images/gatoLindao.jpg" alt="Gato lindão" loading="lazy"/>
+        <img src="images/gatoLindao.webp" alt="Gato lindão" loading="lazy"/>
       </div>
       <div class="galeria-item fade-up fade-up-delay-2">
-        <img src="images/petFeliz.jpg" alt="Pet feliz" loading="lazy"/>
+        <img src="images/petFeliz.webp" alt="Pet feliz" loading="lazy"/>
       </div>
       <div class="galeria-item fade-up fade-up-delay-1">
-        <img src="images/caoSendoCuidado.avif" alt="Cão sendo cuidado" loading="lazy"/>
+        <img src="images/caoSendoCuidado.webp" alt="Cão sendo cuidado" loading="lazy"/>
       </div>
       <div class="galeria-item fade-up fade-up-delay-2">
-        <img src="images/gatosFeliz.avif" alt="Gatos felizes" loading="lazy"/>
+        <img src="images/gatosFeliz.webp" alt="Gatos felizes" loading="lazy"/>
       </div>
     </div>
   </div>
@@ -773,7 +848,7 @@
   aria-label="Falar no WhatsApp"
 >
   <span class="whatsapp-tooltip">Fale conosco!</span>
-    <img src="images/whatsapp.png" alt="Ícone do WhatsApp" class="whatsapp-icon" loading="lazy"/>
+    <img src="images/whatsapp.webp" alt="Ícone do WhatsApp" class="whatsapp-icon" loading="lazy"/>
 </a>
 
 
