@@ -1118,6 +1118,127 @@ nav a:hover::after {
   text-align: right;
 }
 
+/* ── Preview de preço em tempo real (Etapa 2) ── */
+.preco-preview {
+  background: rgba(200,134,10,.07);
+  border: 1.5px solid rgba(200,134,10,.3);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  margin-top: 16px;
+  animation: stageIn .3s ease;
+}
+
+.preco-preview-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--gold-dk);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 10px;
+}
+
+.preco-linha {
+  display: flex;
+  justify-content: space-between;
+  font-size: .88rem;
+  color: var(--text-muted);
+  padding: 3px 0;
+}
+
+.preco-linha.destaque {
+  color: var(--brown);
+  font-weight: 600;
+}
+
+.preco-preview-total {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1.5px dashed rgba(200,134,10,.4);
+  font-size: .95rem;
+  color: var(--brown);
+  text-align: right;
+}
+
+.preco-preview-total strong {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: var(--gold-dk);
+}
+
+/* ── Detalhamento de preço na Etapa 4 ── */
+.preco-resumo {
+  background: var(--white);
+  border: 1.5px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  margin: 12px 0 8px;
+}
+
+.preco-resumo-titulo {
+  font-family: 'Poppins', sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--gold-dk);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.preco-resumo-linha {
+  display: flex;
+  justify-content: space-between;
+  font-size: .88rem;
+  color: var(--text-muted);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--cream-dk);
+}
+
+.preco-resumo-linha:last-of-type {
+  border-bottom: none;
+}
+
+.preco-resumo-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 2px solid var(--gold);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--brown);
+}
+
+.preco-resumo-total span {
+  font-size: 1.25rem;
+  color: var(--gold-dk);
+}
+
+/* Aviso valor estimado */
+.preco-aviso {
+  font-size: .78rem;
+  color: var(--text-muted);
+  background: var(--cream-dk);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  border-left: 3px solid var(--gold);
+}
+
+/* Campo opcional label */
+.form-optional {
+  font-size: .72rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-transform: lowercase;
+  font-family: 'Inter', sans-serif;
+  margin-left: 4px;
+}
+
 .resumo-edit {
   display: inline-flex;
   align-items: center;

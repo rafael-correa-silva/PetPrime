@@ -384,37 +384,120 @@
             </button>
           </fieldset>
 
-          <!-- ETAPA 2: Serviço e Táxi Pet -->
+          <!-- ETAPA 2: Serviço, porte, pelagem e Táxi Pet -->
           <fieldset class="form-stage" data-stage="2">
-            <div class="form-group">
-              <label for="servico">Serviço desejado</label>
-              <div class="input-wrap">
-                <select id="servico" name="servico" required>
-                  <option value="">Selecione...</option>
-                  <option value="Banho">🛁 Banho</option>
-                  <option value="Tosa">✂️ Tosa</option>
-                  <option value="Banho + Tosa">🐶 Banho + Tosa</option>
-                </select>
-                <span class="input-check">✓</span>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="servico">Serviço desejado</label>
+                <div class="input-wrap">
+                  <select id="servico" name="servico" required>
+                    <option value="">Selecione...</option>
+                    <option value="Banho">🛁 Banho</option>
+                    <option value="Tosa">✂️ Tosa</option>
+                    <option value="Banho + Tosa">🐶 Banho + Tosa</option>
+                  </select>
+                  <span class="input-check">✓</span>
+                </div>
+                <span class="form-error"></span>
               </div>
-              <span class="form-error"></span>
+
+              <div class="form-group">
+                <label for="porte">Porte do pet</label>
+                <div class="input-wrap">
+                  <select id="porte" name="porte" required>
+                    <option value="">Selecione...</option>
+                    <option value="pequeno">🐩 Pequeno (até 10kg)</option>
+                    <option value="medio">🐕 Médio (10–25kg)</option>
+                    <option value="grande">🐕‍🦺 Grande (acima de 25kg)</option>
+                  </select>
+                  <span class="input-check">✓</span>
+                </div>
+                <span class="form-error"></span>
+              </div>
             </div>
 
+            <div class="form-row">
+              <div class="form-group">
+                <label for="pelagem">Tipo de pelagem</label>
+                <div class="input-wrap">
+                  <select id="pelagem" name="pelagem" required>
+                    <option value="">Selecione...</option>
+                    <option value="curto">✂️ Curto (sem acréscimo)</option>
+                    <option value="medio">🐾 Médio (+15%)</option>
+                    <option value="longo">🌀 Longo/Enrolado — poodle, shih-tzu... (+30%)</option>
+                  </select>
+                  <span class="input-check">✓</span>
+                </div>
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="peso">Peso aproximado (kg) <span class="form-optional">opcional</span></label>
+                <div class="input-wrap">
+                  <input type="number" id="peso" name="peso" placeholder="Ex: 8" min="0.5" max="100" step="0.5" inputmode="decimal"/>
+                  <span class="input-check">✓</span>
+                </div>
+                <span class="form-hint">Apenas para registro — não afeta o preço.</span>
+              </div>
+            </div>
+
+            <!-- Checkbox desembaraço -->
             <label class="taxi-check">
-              <input type="checkbox" id="taxi-pet" name="taxi-pet"/>
+              <input type="checkbox" id="desembaraco" name="desembaraco"/>
               <span class="taxi-check-label">
-                <strong>🚗 Solicitar Táxi Pet</strong>
-                Precisamos buscar seu pet? Marque aqui e informe o endereço. Orçamento enviado pelo WhatsApp.
+                <strong>🪢 Meu pet está com nós ou pelo emaranhado</strong>
+                Se marcado, soma uma taxa de desembaraço de R$ 15,00.
               </span>
             </label>
 
-            <div class="form-group taxi-endereco" id="taxi-endereco-wrap" hidden>
-              <label for="endereco">Endereço para busca</label>
-              <div class="input-wrap">
-                <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro"/>
-                <span class="input-check">✓</span>
+            <!-- Táxi Pet -->
+            <label class="taxi-check" style="margin-top:12px;">
+              <input type="checkbox" id="taxi-pet" name="taxi-pet"/>
+              <span class="taxi-check-label">
+                <strong>🚗 Solicitar Táxi Pet</strong>
+                Buscamos seu pet em casa. Taxa fixa R$ 18 + R$ 2,50/km (ida e volta).
+              </span>
+            </label>
+
+            <!-- Campos do Táxi Pet (revelados ao marcar) -->
+            <div id="taxi-fields" hidden>
+              <div class="form-group" style="margin-top:12px;">
+                <label for="endereco">Endereço para busca</label>
+                <div class="input-wrap">
+                  <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro"/>
+                  <span class="input-check">✓</span>
+                </div>
               </div>
-              <span class="form-error"></span>
+
+              <div class="form-group">
+                <label for="distancia">Distância até sua casa</label>
+                <div class="input-wrap">
+                  <select id="distancia" name="distancia">
+                    <option value="">Selecione a faixa...</option>
+                    <option value="3">📍 Até 5km (usamos 3km p/ estimativa)</option>
+                    <option value="7.5">📍 Entre 5km e 10km (usamos 7,5km)</option>
+                    <option value="consulta">📍 Acima de 10km — sob consulta</option>
+                  </select>
+                  <span class="input-check">✓</span>
+                </div>
+                <span class="form-hint">
+                  <!-- NOTA TÉCNICA: este cálculo usa faixas informadas pelo cliente,
+                       NÃO calcula rota real. Para calcular pelo endereço real,
+                       será necessário integrar Google Maps Distance Matrix API
+                       ou Mapbox Directions API (projeto separado). -->
+                  Estimativa baseada na faixa selecionada. Valor final confirmado pelo WhatsApp.
+                </span>
+              </div>
+            </div>
+
+            <!-- Preview de preço em tempo real -->
+            <div class="preco-preview" id="preco-preview" hidden>
+              <div class="preco-preview-title">💰 Estimativa em tempo real</div>
+              <div id="preco-preview-detalhes"></div>
+              <div class="preco-preview-total">
+                Total estimado: <strong id="preco-preview-total">R$ 0,00</strong>
+              </div>
             </div>
 
             <div class="form-stage-actions">
@@ -462,6 +545,13 @@
           <!-- ETAPA 4: Resumo / confirmação -->
           <fieldset class="form-stage" data-stage="4">
             <div class="resumo-card" id="resumo-card" aria-live="polite"></div>
+
+            <!-- Detalhamento de preço -->
+            <div class="preco-resumo" id="preco-resumo"></div>
+
+            <p class="preco-aviso">
+              ⚠️ <strong>Valor estimado.</strong> Confirmação final e fechamento de preço acontece pelo WhatsApp. Sujeito a alteração após avaliação presencial do pet.
+            </p>
 
             <div class="form-stage-actions">
               <button type="button" class="btn btn-outline form-prev" data-prev="3">← Voltar</button>
