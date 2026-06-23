@@ -344,15 +344,25 @@ if (form) {
 
   /* ===================== NAVEGAÇÃO ENTRE ETAPAS ===================== */
   function irParaEtapa(num) {
+    // Etapas (fieldsets)
     form.querySelectorAll('.form-stage').forEach(s => s.classList.remove('active'));
+    const alvo = form.querySelector(`.form-stage[data-stage="${num}"]`);
+    if (alvo) alvo.classList.add('active');
+
+    // Círculos dos steps
     form.querySelectorAll('.form-step').forEach(s => {
-      s.classList.remove('active','done');
+      s.classList.remove('active', 'done');
       const n = Number(s.dataset.step);
       if (n < num) s.classList.add('done');
       if (n === num) s.classList.add('active');
     });
-    const alvo = form.querySelector(`.form-stage[data-stage="${num}"]`);
-    if (alvo) alvo.classList.add('active');
+
+    // Linhas entre os steps: fica colorida se o step à esquerda já foi concluído
+    form.querySelectorAll('.form-step-line').forEach(line => {
+      const n = Number(line.dataset.after); // linha após o step N
+      line.classList.toggle('done', n < num);
+    });
+
     if (num === 4) { montarResumo(); montarPrecoResumo(); }
     form.closest('.form-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }

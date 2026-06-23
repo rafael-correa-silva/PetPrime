@@ -972,8 +972,8 @@ nav a:hover::after {
 }
 
 .form-step.done .form-step-circle {
-  background: var(--brown);
-  border-color: var(--brown);
+  background: var(--gold);
+  border-color: var(--gold);
   color: var(--white);
   font-size: 0;
 }
@@ -983,13 +983,18 @@ nav a:hover::after {
   font-size: .9rem;
 }
 
+.form-step.done .form-step-label {
+  color: var(--gold-dk);
+}
+
 .form-step-line {
   flex: 1;
   height: 2px;
   background: var(--border);
   margin: 0 4px;
   margin-bottom: 18px;
-  transition: background var(--transition);
+  border-radius: 2px;
+  transition: background .4s ease;
 }
 
 .form-step-line.done {

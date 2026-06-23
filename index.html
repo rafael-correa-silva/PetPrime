@@ -29,13 +29,7 @@
   <div class="container">
     <div class="header-inner">
       <a href="#hero" class="logo" aria-label="PetPrime Home">
-        <img src="images/logo.png" alt="PetPrime Logo" class="logo-img" loading="lazy"/>
-      </a>
-          <!-- Slogan -->
-          <text x="40" y="40" font-family="Inter,sans-serif" font-size="8.5" fill="#6B4C3B" letter-spacing="0.3">Cuidado &amp; Qualidade para seu Pet</text>
-        </svg>
-      </a>
-
+        <img src="images/logo.png" alt="PetPrime Logo" class="logo-img" loading="lazy"/>     
       <nav aria-label="Menu principal">
         <ul>
           <li><a href="#sobre">Sobre</a></li>
@@ -324,30 +318,30 @@
       <div class="form-card fade-up fade-up-delay-1">
         <h3>🐾 Formulário de agendamento</h3>
 
-        <!-- Indicador de progresso -->
-        <div class="form-steps" aria-hidden="true">
-          <div class="form-step active" data-step="1">
-            <span class="form-step-circle">1</span>
-            <span class="form-step-label">Dados</span>
-          </div>
-          <div class="form-step-line"></div>
-          <div class="form-step" data-step="2">
-            <span class="form-step-circle">2</span>
-            <span class="form-step-label">Serviço</span>
-          </div>
-          <div class="form-step-line"></div>
-          <div class="form-step" data-step="3">
-            <span class="form-step-circle">3</span>
-            <span class="form-step-label">Data</span>
-          </div>
-          <div class="form-step-line"></div>
-          <div class="form-step" data-step="4">
-            <span class="form-step-circle">4</span>
-            <span class="form-step-label">Confirmar</span>
-          </div>
-        </div>
-
         <form id="form-agendamento" novalidate>
+
+          <!-- Indicador de progresso — DENTRO do form para o JS encontrar via form.querySelectorAll -->
+          <div class="form-steps" aria-hidden="true">
+            <div class="form-step active" data-step="1">
+              <span class="form-step-circle">1</span>
+              <span class="form-step-label">Dados</span>
+            </div>
+            <div class="form-step-line" data-after="1"></div>
+            <div class="form-step" data-step="2">
+              <span class="form-step-circle">2</span>
+              <span class="form-step-label">Serviço</span>
+            </div>
+            <div class="form-step-line" data-after="2"></div>
+            <div class="form-step" data-step="3">
+              <span class="form-step-circle">3</span>
+              <span class="form-step-label">Data</span>
+            </div>
+            <div class="form-step-line" data-after="3"></div>
+            <div class="form-step" data-step="4">
+              <span class="form-step-circle">4</span>
+              <span class="form-step-label">Confirmar</span>
+            </div>
+          </div>
 
           <!-- ETAPA 1: Dados do tutor e pet -->
           <fieldset class="form-stage active" data-stage="1">
