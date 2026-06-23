@@ -35,13 +35,29 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 fadeEls.forEach(el => observer.observe(el));
 
-/* ── FAQ ── */
+/* ── FAQ — acessível via teclado e aria-expanded ── */
 document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
+  function toggleFaq() {
     const item = q.parentElement;
     const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+    // Fecha todos e reseta aria-expanded
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+    });
+    // Abre o clicado se estava fechado
+    if (!isOpen) {
+      item.classList.add('open');
+      q.setAttribute('aria-expanded', 'true');
+    }
+  }
+  q.addEventListener('click', toggleFaq);
+  // Suporte a teclado (Enter e Espaço) — elementos têm tabindex="0" e role="button"
+  q.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleFaq();
+    }
   });
 });
 
@@ -657,4 +673,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const target = document.querySelector(a.getAttribute('href'));
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
+});
+
+/* ── Copyright — ano automático ── */
+document.querySelectorAll('.footer-bottom p').forEach(p => {
+  p.innerHTML = p.innerHTML.replace(/©\s*(?:\d{4}\s*)?PetPrime/, `© ${new Date().getFullYear()} PetPrime`);
 });
